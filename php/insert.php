@@ -2,9 +2,13 @@
     $CN=mysqli_connect("localhost","root","");
     $DB=mysqli_select_db($CN,"cst");
 
-    $RollNo=$_POST['RollNo'];
-    $StudentName=$_POST['StudentName'];
-    $Course=$_POST['Course'];
+    // $RollNo=$_POST['RollNo'];
+    // $StudentName=$_POST['StudentName'];
+    // $Course=$_POST['Course'];
+
+    $RollNo = isset($_POST['RollNo']) ? $_POST['RollNo'] : '';
+    $StudentName = isset($_POST['StudentName']) ? $_POST['StudentName'] : '';
+    $Course = isset($_POST['Course']) ? $_POST['Course'] : '';
 
     $IQ="insert into studentmaster(RollNo,StudentName,Course) values($RollNo,'$StudentName','$Course')";
 
