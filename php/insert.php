@@ -6,9 +6,12 @@
     // $StudentName=$_POST['StudentName'];
     // $Course=$_POST['Course'];
 
-    $RollNo = isset($_POST['RollNo']) ? $_POST['RollNo'] : '';
-    $StudentName = isset($_POST['StudentName']) ? $_POST['StudentName'] : '';
-    $Course = isset($_POST['Course']) ? $_POST['Course'] : '';
+    $EncodedData=file_get_contents('php://input'); //this access the data from react-native
+    $DecodedData=json_decode($EncodedData,true);//this transform the json data into normal data
+
+    $RollNo = $DecodedData['RollNo'];
+    $StudentName = $DecodedData['StudentName'];
+    $Course = $DecodedData['Course'];
 
     $IQ="insert into studentmaster(RollNo,StudentName,Course) values($RollNo,'$StudentName','$Course')";
 

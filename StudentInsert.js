@@ -19,7 +19,29 @@ export default class StudentInsert extends Component{
             alert("Required field is missing");
         }
         else{
-            alert("Fetch API code come here");
+            var InsertAPIURL="http://10.0.2.2:80/Api/insert.php";
+
+            var headers={
+                'Accept':'application/json',
+                'Content-Type':'application/json',
+            };
+
+            //This variable will contain our data
+            var Data={
+                RollNo:RollNo,
+                StudentName:StudentName,
+                Course:Course,
+            };
+
+            fetch(InsertAPIURL, {
+                method:'POST',
+                headers:headers,
+                body: JSON.stringify(Data), //convert data into json format
+            }).then((response)=>response.json()).then((response)=>{ //determines if the response is in json format or not
+                alert(response[0].Message);
+            }).catch((error)=>{
+                alert("Error"+error);
+            })
         }
     }
 
