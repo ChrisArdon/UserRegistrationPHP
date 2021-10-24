@@ -22,5 +22,9 @@
     {
         $Message="Server Error... Please try later";
     }
-    echo($Message);
+    // echo($Message);
+
+    //transforming the message to JSON for react-native to read
+    $Respose[]=array("Message"=>$Message);
+    echo json_encode($Respose);
 ?>
